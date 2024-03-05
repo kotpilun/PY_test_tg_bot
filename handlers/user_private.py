@@ -1,4 +1,4 @@
-from aiogram import types, Router
+from aiogram import types, Router, F
 from aiogram.filters import CommandStart, Command
 
 user_privat_router = Router()
@@ -14,3 +14,7 @@ async def menu_cmd(message:types.Message):
 @user_privat_router.message(Command('about'))
 async def about_cmd(message:types.Message):
     await message.answer('About section of this test bot')
+
+@user_privat_router.message(F.text)
+async def about_cmd(message:types.Message):
+    await message.answer('Text magic filter')
